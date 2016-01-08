@@ -1,2 +1,2 @@
 # Loadphoto
-欢迎大家来看看
+教材地址https://github.com/wangjiasheng/Loadphoto/wiki
