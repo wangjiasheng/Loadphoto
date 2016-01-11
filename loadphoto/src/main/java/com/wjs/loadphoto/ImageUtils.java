@@ -2,6 +2,7 @@ package com.wjs.loadphoto;
 
 import android.content.Context;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
 import android.os.Environment;
 import android.widget.ImageView;
@@ -200,10 +201,7 @@ public class ImageUtils
 			super.onPreExecute();
 			String url=context.getClass().toString()+"/loading";
 			Bitmap bitmap = getLocalBitmapResourse(url,loadingresourse);
-			if(bitmap!=null)
-			{
-				listener.loadPre(view,url,bitmap);
-			}
+			listener.loadPre(view,url,bitmap);
 		}
 		@Override
 		protected Bitmap doInBackground(String... arg0) 
@@ -249,11 +247,8 @@ public class ImageUtils
 			else
 			{
 				String url=context.getClass().toString()+"/loadingfaile";
-				Bitmap bitmap = getLocalBitmapResourse(url,loadfaileresourse);
-				if(bitmap!=null)
-				{
-					listener.loadFaile(view,url,bitmap);
-				}
+				Bitmap bitmap = BitmapFactory.decodeResource(context.getResources(),loadfaileresourse);
+				listener.loadFaile(view,url,bitmap);
 			}
 		}
 	}

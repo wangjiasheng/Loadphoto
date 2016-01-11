@@ -1,5 +1,6 @@
 package com.wjs.loadphoto;
 
+import android.content.Context;
 import android.os.Environment;
 
 import java.io.File;
@@ -52,5 +53,41 @@ public class SDCardUtils
 			return file.mkdirs();
 		}
 		return true;
+	}
+
+	/**
+	 * @param context 上下文对象
+	 * @return path /storage/emulated/0/Android/data/com.wjs.loadphoto.demo/files
+	 */
+	public static final String getExternalAndroidDir(Context context)
+	{
+		String path=context.getExternalFilesDir(null).getAbsolutePath();
+		return path;
+	}
+
+	/**
+	 * @param context 上下文对象
+	 * @return path /data/data/com.wjs.loadphoto.demo/files
+	 */
+	public static final String getAndroidDir(Context context)
+	{
+		return context.getFilesDir().getAbsolutePath();
+	}
+
+	/**
+	 * @param context 上下文对象
+	 * @return path /storage/emulated/0/Android/data/com.wjs.loadphoto.demo/cache
+	 */
+	public static final String getExternalCacheDir(Context context)
+	{
+		return context.getExternalCacheDir().getAbsolutePath();
+	}
+	/**
+	 * @param context 上下文对象
+	 * @return path /data/data/com.wjs.loadphoto.demo/cache
+	 */
+	public static final String getCacheDir(Context context)
+	{
+		return context.getCacheDir().getAbsolutePath();
 	}
 }
