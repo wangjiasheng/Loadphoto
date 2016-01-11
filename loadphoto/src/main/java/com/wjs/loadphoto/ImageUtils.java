@@ -200,7 +200,7 @@ public class ImageUtils
 		{
 			super.onPreExecute();
 			String url=context.getClass().toString()+"/loading";
-			Bitmap bitmap = getLocalBitmapResourse(url,loadingresourse);
+			Bitmap bitmap = BitmapFactory.decodeResource(context.getResources(),loadingresourse);
 			listener.loadPre(view,url,bitmap);
 		}
 		@Override
