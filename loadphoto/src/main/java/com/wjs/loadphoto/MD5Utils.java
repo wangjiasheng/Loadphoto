@@ -3,7 +3,6 @@ import java.security.MessageDigest;
 
 
 public class MD5Utils {
-
 	// MD5加码。32位
 	public static String MD5(String inStr) 
 	{

@@ -57,11 +57,12 @@ public class SDCardUtils
 
 	/**
 	 * @param context 上下文对象
+	 *  @param dir 可以为null
 	 * @return path /storage/emulated/0/Android/data/com.wjs.loadphoto.demo/files
 	 */
-	public static final String getExternalAndroidDir(Context context)
+	public static final String getExternalAndroidDir(Context context,String dir)
 	{
-		String path=context.getExternalFilesDir(null).getAbsolutePath();
+		String path=context.getExternalFilesDir(dir).getAbsolutePath();
 		return path;
 	}
 

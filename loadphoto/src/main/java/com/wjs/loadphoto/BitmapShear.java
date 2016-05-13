@@ -1,7 +1,5 @@
 package com.wjs.loadphoto;
-
 import android.graphics.Bitmap;
-
 /**
  * @author 314232332
  */

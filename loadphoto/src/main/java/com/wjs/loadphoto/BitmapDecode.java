@@ -6,7 +6,6 @@ import android.graphics.BitmapFactory;
 
 public class BitmapDecode
 {
-
 	/**
 	 * 更具宽高压缩图片
 	 * @param context 上下文对象

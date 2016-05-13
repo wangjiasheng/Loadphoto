@@ -9,7 +9,6 @@ import android.widget.ImageView;
 
 import java.io.File;
 import java.util.concurrent.Executors;
-
 public class ImageUtils
 {
 	private int width=200;
@@ -114,24 +113,30 @@ public class ImageUtils
 			task.executeOnExecutor(Executors.newFixedThreadPool(threadPoolSize));
 		}
 	}
+
+	/**
+	 * @param url  本地图片的key值
+	 * @param resourse  本地图片drawable的id
+	 * @return 图片对象
+	 */
 	public Bitmap getLocalBitmapResourse(String url,int resourse)
 	{
 		if(resourse!=-1)
 		{
 			Bitmap bitmap = null;
-			if((bitmap=lrumanager.getBitmap(url+width+"x"+height))!=null)
+			if((bitmap=lrumanager.getBitmap(url+width+"x"+height))!=null)// LRU和SoftRefrence获取图片
 			{
 			}
-			else if((bitmap=filtmanager.getBitmap(url+width+"x"+height))!=null)
+			else if((bitmap=filtmanager.getBitmap(url+width+"x"+height))!=null)//文件获取图片
 			{
 				lrumanager.putBitmap(url+width+"x"+height, bitmap);
 			}
 			else
 			{
-				Bitmap loadingtemp = BitmapDecode.compressBitmapTo(context, resourse, width, height);
+				Bitmap loadingtemp = BitmapDecode.compressBitmapTo(context, resourse, width, height);//通过手机分辨率获取最合适的采样
 				if(loadingtemp!=null)
 				{
-					bitmap = BitmapShear.cutBitmap(loadingtemp, width, height);
+					bitmap = BitmapShear.cutBitmap(loadingtemp, width, height);//将不正常的宽高比切割成所需要的宽高比
 					lrumanager.putBitmap(url + width + "x" + height, bitmap);
 					filtmanager.putBitmap(url + width + "x" + height, bitmap);
 					if (loadingtemp.isRecycled()) {
@@ -143,6 +148,11 @@ public class ImageUtils
 		}
 		return null;
 	}
+
+	/**
+	 * @param url 本地图片的key值
+	 * @return 图片对象
+	 */
 	public Bitmap getLocalBitmapResourse(String url)
 	{
 		Bitmap bitmap = null;
@@ -233,9 +243,9 @@ public class ImageUtils
 			}
 			else if(url.startsWith("file://"))
 			{
-				getLocalBitmapResourse(url);
+				bitmap=getLocalBitmapResourse(url);
 			}
-			return null;
+			return bitmap;
 		}
 		@Override
 		protected void onPostExecute(Bitmap result) 

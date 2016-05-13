@@ -6,8 +6,7 @@ import android.util.Log;
 import java.lang.ref.SoftReference;
 import java.util.HashMap;
 import java.util.Map;
-
-public class SoftReferenceCacheManager 
+public class SoftReferenceCacheManager
 {
 	private static SoftReferenceCacheManager msrm=null;
 	private Map<String, SoftReference<Bitmap>> map=null;
@@ -20,7 +19,7 @@ public class SoftReferenceCacheManager
 		if(msrm==null)
 		{
 			msrm=new SoftReferenceCacheManager();
-			System.out.println("创建软缓存");
+			Log.i("wjs", "创建软缓存");
 		}
 		return msrm;
 	}

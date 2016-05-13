@@ -10,7 +10,6 @@ import android.telephony.TelephonyManager;
 import java.util.List;
 
 public class NetworkUtils {
-
 	/**
 	 *  判断网络是否可用
 	 * @param context 上下文对象

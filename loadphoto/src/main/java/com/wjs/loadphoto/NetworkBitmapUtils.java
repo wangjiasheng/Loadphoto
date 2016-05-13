@@ -14,8 +14,7 @@ public class NetworkBitmapUtils
 {
 	private static Options getBitmapOption(String urlstring)
 	{
-		
-		try 
+		try
 		{
 			URL url = new URL(urlstring);
 			HttpURLConnection con=(HttpURLConnection) url.openConnection();
