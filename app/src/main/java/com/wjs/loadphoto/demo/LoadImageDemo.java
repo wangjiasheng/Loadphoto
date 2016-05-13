@@ -6,12 +6,14 @@ import android.os.Environment;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 
 import com.wjs.loadphoto.ImageUtils;
+import com.wjs.loadphoto.SDCardUtils;
 
 import java.io.File;
 
@@ -32,5 +34,7 @@ public class LoadImageDemo extends Activity {
         urls.setThreadPoolSize(5);//设置同时加载图片的数量
         String path="file://"+ Environment.getExternalStorageDirectory().getAbsolutePath()+ File.separator+"zhenmian.png";
         urls.loadImage(iv, path);
+        Log.i("wjs", SDCardUtils.getAndroidDir(this));
+        Log.i("wjs",SDCardUtils.getCacheDir(this));
     }
 }
